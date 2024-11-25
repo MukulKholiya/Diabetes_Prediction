@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Performance Metrics</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .navbar {
+            background-color: #007bff;
+        }
+        .navbar-brand, .nav-link {
+            color: white !important;
+        }
+        .performance-table {
+            background-color: #ffffff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar   navbar-expand-lg custom-navbar">
+        <a class="navbar-brand" href="#">Diabetes Predictor</a>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/performance">Performance</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container mt-5 performance-table">
+        <h1 class="text-center">Performance Metrics</h1>
+
+        <div class="mt-4 text-center">
+            <h5>Precision: <span class="font-weight-bold">{{ precision if precision is not none else 'N/A' }}</span></h5>
+            <h5>Recall: <span class="font-weight-bold">{{ recall if recall is not none else 'N/A' }}</span></h5>
+            <h5>Accuracy: <span class="font-weight-bold">{{ accuracy if accuracy is not none else 'N/A' }}</span></h5>
+        </div>
+
+        <h5 class="mt-4">Confusion Matrix:</h5>
+        <table class="table table-bordered text-center">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Predicted No</th>
+                    <th>Predicted Yes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>Actual No</th>
+                    <td>{{ confusion_matrix[0][0] if confusion_matrix else 'N/A' }}</td>
+                    <td>{{ confusion_matrix[0][1] if confusion_matrix else 'N/A' }}</td>
+                </tr>
+                <tr>
+                    <th>Actual Yes</th>
+                    <td>{{ confusion_matrix[1][0] if confusion_matrix else 'N/A' }}</td>
+                    <td>{{ confusion_matrix[1][1] if confusion_matrix else 'N/A' }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="text-center">
+            <a href="/" class="btn btn-primary mt-4">Back to Home</a>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+        .custom-navbar {
+            background-color: #003366; /* Dark blue color */
+        }
+        .navbar-brand, .nav-link {
+            color: white !important; /* Ensures text color is white */
+        }
+    </style>
+    
+</body>
+</html>

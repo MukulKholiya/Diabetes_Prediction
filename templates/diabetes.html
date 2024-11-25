@@ -4,52 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Diabetes Prediction</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom Styles -->
-    <style>
-        body {
-            background-color: #f8f9fa;
-            padding: 30px;
-        }
-
-        .container {
-            max-width: 800px;
-            margin: auto;
-            background-color: #fff;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        h1 {
-            text-align: center;
-            color: #007bff;
-            margin-bottom: 30px;
-        }
-
-        .form-group label {
-            font-weight: bold;
-        }
-
-        .btn-primary {
-            width: 100%;
-            padding: 12px;
-            font-size: 1.1rem;
-            border-radius: 4px;
-        }
-
-        .result {
-            text-align: center;
-            margin-top: 20px;
-            font-size: 1.2rem;
-        }
-    </style>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Diabetes Predictor</a>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/performance">Performance</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
     <div class="container">
-        <h1>Diabetes Prediction Model</h1>
+        <h1 class="text-center text-primary mt-4">Diabetes Prediction</h1>
         <form action="/predict" method="POST">
             <div class="form-group">
                 <label for="1">Gender</label>
@@ -94,26 +67,27 @@
             </div>
 
             <div class="form-group">
-                <label for="6">Hemoglobin A1C</label>
-                <input id="6" name="HbA1c_level" type="text" class="form-control" required>
+                <label for="7">Hemoglobin A1C</label>
+                <input id="7" name="HbA1c_level" type="text" class="form-control" required>
             </div>
 
             <div class="form-group">
-                <label for="7">Blood Glucose Level</label>
-                <input id="7" name="blood_glucose_level" type="number" class="form-control" required>
+                <label for="8">Blood Glucose Level</label>
+                <input id="8" name="blood_glucose_level" type="number" class="form-control" required>
             </div>
 
-            <div class="form-group">
-                <button type="submit" class="btn btn-primary">Predict Probability</button>
-            </div>
+            <button type="submit" class="btn btn-primary">Predict Probability</button>
         </form>
 
-        <div class="result">
-            <h4><b>{{ pred }}</b></h4>
+        <hr>
+
+        {% if pred %}
+        <div class="alert alert-info text-center">
+            <h4>{{ pred }}</h4>
         </div>
+        {% endif %}
     </div>
 
-    <!-- Bootstrap JS and Popper.js -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
