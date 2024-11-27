@@ -47,18 +47,18 @@ def predict():
     except Exception as e:
         return render_template('diabetes.html', pred=f"Error: {str(e)}")
 
-@app.route('/performance')
-def performance():
-    global y_true, y_pred
-    precision = recall = accuracy = conf_matrix = None
+# @app.route('/performance')
+# def performance():
+#     global y_true, y_pred
+#     precision = recall = accuracy = conf_matrix = None
 
-    if y_true and y_pred:
-        precision = precision_score(y_true, y_pred, average='binary', zero_division=0)
-        recall = recall_score(y_true, y_pred, average='binary', zero_division=0)
-        accuracy = accuracy_score(y_true, y_pred)
-        conf_matrix = confusion_matrix(y_true, y_pred).tolist()
+#     if y_true and y_pred:
+#         precision = precision_score(y_true, y_pred, average='binary', zero_division=0)
+#         recall = recall_score(y_true, y_pred, average='binary', zero_division=0)
+#         accuracy = accuracy_score(y_true, y_pred)
+#         conf_matrix = confusion_matrix(y_true, y_pred).tolist()
     
-    return render_template('performance.html', precision=round(precision, 2) if precision is not None else None, recall=round(recall, 2) if recall is not None else None, accuracy=round(accuracy, 2) if accuracy is not None else None, confusion_matrix=conf_matrix if conf_matrix is not None else None)
+#     return render_template('performance.html', precision=round(precision, 2) if precision is not None else None, recall=round(recall, 2) if recall is not None else None, accuracy=round(accuracy, 2) if accuracy is not None else None, confusion_matrix=conf_matrix if conf_matrix is not None else None)
 
 if __name__ == '__main__':
     app.run(debug=True)
